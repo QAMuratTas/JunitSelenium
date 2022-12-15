@@ -1,3 +1,5 @@
+package Day01;
+
 import org.junit.*;
 
 public class C02_JunitAnnotations {
