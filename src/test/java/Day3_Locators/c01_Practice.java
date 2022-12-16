@@ -2,6 +2,7 @@ package Day3_Locators;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -34,6 +35,10 @@ WebDriver driver;
         driver.findElement(By.xpath("//*[@id=\"session_key\"]")).sendKeys("etsiz bir text"+ Keys.ENTER);
 //control.sendKeys("etsiz bir text");
 //control.submit();
+WebElement alertMessage =driver.findElement(By.xpath("//p[@class=\"alert-content\"]"));
+        Assert.assertTrue("Mesaj görülmedi",alertMessage.isDisplayed());
+        //Assert.assertEquals(true,alertMessage.isDisplayed());
+        //Assert.assertFalse(!alertMessage.isDisplayed());
 
     }
 
