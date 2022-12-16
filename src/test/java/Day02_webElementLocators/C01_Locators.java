@@ -124,7 +124,31 @@ public class C01_Locators {
         // //input[@class='input__input'][@name='session_key']
 
         WebElement email = driver.findElement(By.xpath("//input[@class='input__input'][@name='session_key']"));
-        email.sendKeys("Murat tester oldu");
+        email.sendKeys("Ben qa Tester oldum");
     }
+    @Test
+    public void andORAttributexPath(){
+        // //input[@class='input__input' and @name='session_key']
+
+        WebElement email = driver.findElement(By.xpath("//input[@class='input__input' and @name='session_key']"));
+        email.sendKeys("Ben qa Tester oldum");
+    }
+
+    //
+    @Test
+    public void ORAttributexPath(){
+        // //input[@id='session_key' or @id='session_password']
+
+        WebElement email = driver.findElement(By.xpath("//input[@id='session_password' or @id='session_key']"));
+        email.sendKeys("Ben qa Tester oldum");
+    }
+    @Test
+    public void containsxPath(){
+        // //input[contains(@id,'session')]
+
+        WebElement email = driver.findElement(By.xpath("//input[contains(@id,'session')]"));
+        email.sendKeys("Ben qa Tester oldum");
+    }
+
 
 }
