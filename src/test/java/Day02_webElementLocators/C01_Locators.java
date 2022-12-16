@@ -39,7 +39,7 @@ public class C01_Locators {
     public void tearDown(){
 
         // driver imiz kapatildi
-        driver.quit();
+        //driver.quit();
     }
 
 
@@ -119,6 +119,12 @@ public class C01_Locators {
         WebElement email = driver.findElement(By.xpath("//input[@name='session_key']"));
         email.sendKeys("Karl relative xpath konusunu gayet basirili tamamladi");
     }
+    @Test
+    public void multipleAttributexPath(){
+        // //input[@class='input__input'][@name='session_key']
 
+        WebElement email = driver.findElement(By.xpath("//input[@class='input__input'][@name='session_key']"));
+        email.sendKeys("Murat tester oldu");
+    }
 
 }
