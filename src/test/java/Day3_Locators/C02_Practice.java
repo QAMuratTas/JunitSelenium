@@ -36,7 +36,7 @@ public class C02_Practice {
 }
     @AfterClass
     public static void closeDriver (){
-        //driver.quit();
+        driver.quit();
 
     }
 @Test
@@ -44,9 +44,25 @@ public class C02_Practice {
     WebElement searc =driver.findElement(By.name("q"));
     searc.sendKeys("Green Mile"+ Keys.ENTER);
     WebElement results =driver.findElement(By.id("result-stats"));
-    System.out.println("results.getText() = " + results.getText());
+    System.out.println("results.getText(Green Mile Sonucu) = " + results.getText());
 }
-
+@Test
+    public void test02(){
+        WebElement search = driver.findElement(By.name("q"));
+        search.sendKeys("Premonition"+Keys.ENTER);
+        WebElement results = driver.findElement(By.id("result-stats"));
+    System.out.println("results.getText(Premoinition sounuc:) = " + results.getText());
+}
+    @Test
+    public void test03(){
+       // 4 satırlık code 2 satırla da olabiliyor.
+        //WebElement search = driver.findElement(By.name("q"));
+        //search.sendKeys("The Curious Case of Benjamin Button"+Keys.ENTER);
+        driver.findElement(By.name("q")).sendKeys("The Curious Case of Benjamin Button\"+Keys.ENTER"+ Keys.ENTER);
+        //WebElement results = driver.findElement(By.id("result-stats"));
+        System.out.println("The Curious Case of Benjamin Button  sonuc= " + driver.findElement(By.id("result-stats")).getText());
+       // System.out.println("results.getText(The Curious Case of Benjamin Button:) = " + results.getText());
+    }
 
 
 
