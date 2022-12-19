@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaDriverInfo;
@@ -30,8 +31,14 @@ public class Task {
     @Before
     public void setup(){
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        ChromeOptions options =new ChromeOptions();
+        //options.addArguments("headless");
+        options.addArguments("incognito");
+        driver = new ChromeDriver(options);
+
+
+      //  driver = new ChromeDriver();
+        //driver.manage().window().maximize();
 
     }
 
