@@ -61,6 +61,14 @@ public class C02_DropDown {
 
     }@Test
     public void selectByVisibleText(){
+        driver.get("https://demo.guru99.com/test/newtours/register.php");
+
+        //Dropdown locate edildi
+        WebElement drpDown = driver.findElement(By.name("country"));
+
+        //Locate edilen dropdown select objesine donusturuldu
+        Select select = new Select(drpDown);
+        select.selectByVisibleText("NEPAL");
 
     }
 
