@@ -10,26 +10,29 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class C02_DropDown {
 
 
     WebDriver driver;
 
     @Before
-    public void setup (){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
+
     @After
 
-    public void tearDown () {
+    public void tearDown() {
         //driver.quit();
 
     }
 
     @Test
-    public void selectByindex(){
+    public void selectByindex() {
         driver.get("https://demo.guru99.com/test/newtours/register.php");
 
         //Dropdown locate edildi
@@ -44,8 +47,9 @@ public class C02_DropDown {
 
 
     }
+
     @Test
-    public void selectByvalue(){
+    public void selectByvalue() {
 
         driver.get("https://demo.guru99.com/test/newtours/register.php");
 
@@ -58,9 +62,10 @@ public class C02_DropDown {
         select.selectByValue("TURKEY");
 
 
+    }
 
-    }@Test
-    public void selectByVisibleText(){
+    @Test
+    public void selectByVisibleText() {
         driver.get("https://demo.guru99.com/test/newtours/register.php");
 
         //Dropdown locate edildi
@@ -72,5 +77,47 @@ public class C02_DropDown {
 
     }
 
+    @Test
+    public void multipleSelect() {
 
+        driver.get("https://output.jsbin.com/osebed/2");
+
+        //Dropdown locate ediliyor
+        Select select = new Select(driver.findElement(By.id("fruits")));
+
+        System.out.println(select.isMultiple());
+
+        select.selectByValue("apple");
+
+        select.selectByIndex(3);  //Grape
+
+    }
+
+    @Test
+    public void getOptions() {
+        driver.get("https://demo.guru99.com/test/newtours/register.php");
+
+        Select select = new Select(driver.findElement(By.name("country")));
+
+        // getOptions() metodu select elementinin tum seceneklerini (optionlarini) bir liste icerisinde bize verir
+        List<WebElement> options = select.getOptions();
+
+
+        for (WebElement option : options) {
+            System.out.println(option.getText());
+        }
+    }
+    @Test
+    public void getFirstSelectedOption() {
+        driver.get("https://output.jsbin.com/osebed/2");
+
+        Select select = new Select(driver.findElement(By.id("fruits")));
+        select.selectByIndex(3);
+        select.selectByIndex(2);
+    WebElement selectedOptions = select.getFirstSelectedOption();
+
+        System.out.println(selectedOptions.getText());
+
+
+    }
 }
