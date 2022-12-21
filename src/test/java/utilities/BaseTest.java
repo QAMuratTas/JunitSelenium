@@ -10,7 +10,9 @@ import java.time.Duration;
 
 public abstract class BaseTest {
    protected WebDriver driver;
-
+//    Abstract yaparak TestBase Class'ından obje oluşturulmasının önüne geçeriz.
+//    TestBase Class'ı sadece extends ile inherit ederek kullanacağız.
+//    Dolayısıyla oluşturduğumuz driver variable'i için protected access modifier seçiyoruz.
     @Before
     public void setup(){
         //Driver ile ilgili her turlu initial(baslangic) islemi burada yapilir
@@ -23,7 +25,7 @@ public abstract class BaseTest {
     @After
     public void tearDown(){
         // test sonrasinda driver kapatmak (varsa raporlari dosyalamak) icin kullanilir.
-        //driver.quit();
+        driver.quit();
     }
 
 }

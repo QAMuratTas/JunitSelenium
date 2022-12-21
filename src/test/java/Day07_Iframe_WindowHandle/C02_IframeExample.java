@@ -25,6 +25,12 @@ public class C02_IframeExample extends BaseTest {
         // Formu doldurun (Formu istediğiniz metinlerle doldurun) apply button’a basınız.
 
 
+    @Override
+    public void tearDown() {
+        // buraya overrride ettik çünkü kapatmak istemeyeceğimiz testler olabileceğinden dolayı.
+        // parent class daki çalışmamış oldu...
+    }
+
     @Test
     public void iframeExample(){
 
