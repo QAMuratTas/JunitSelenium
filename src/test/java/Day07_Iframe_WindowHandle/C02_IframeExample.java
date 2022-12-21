@@ -8,28 +8,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.BaseTest;
 
 import java.time.Duration;
 import java.util.List;
 
-public class C02_IframeExample {
+public class C02_IframeExample extends BaseTest {
 
-    WebDriver driver;
 
-    @Before
-    public void setup(){
-        //Driver ile ilgili her turlu initial(baslangic) islemi burada yapilir
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-    }
-
-    @After
-    public void tearDown(){
-        // test sonrasinda driver kapatmak (varsa raporlari dosyalamak) icin kullanilir.
-        //driver.quit();
-    }
 
         // https://www.jqueryscript.net/demo/Easy-iFrame-based-Twitter-Emoji-Picker-Plugin-jQuery-Emoojis/ sitesine gidiniz.
         // Web sitesini maximize yapınız.

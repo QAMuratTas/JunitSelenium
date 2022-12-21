@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class BaseTest {
+public abstract class BaseTest {
    protected WebDriver driver;
 
     @Before
@@ -25,7 +25,5 @@ public class BaseTest {
         // test sonrasinda driver kapatmak (varsa raporlari dosyalamak) icin kullanilir.
         //driver.quit();
     }
-
-
 
 }
