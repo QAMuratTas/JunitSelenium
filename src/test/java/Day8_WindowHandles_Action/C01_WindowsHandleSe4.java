@@ -24,6 +24,14 @@ public class C01_WindowsHandleSe4 extends BaseTest {
 // dikkat driver objesi switchTo neredeyse onun için çalışıyor.... dikkat!!
 
     }
+    @Test
+    public void newTab(){
+        driver.get("https://testproject.io/");
+        driver.switchTo().newWindow(WindowType.TAB);
+        driver.get("https://www.amazon.com");
+
+        System.out.println(driver.getTitle());// aktif tab ın titlesi yazdırıldı
+    }
 
 
 
