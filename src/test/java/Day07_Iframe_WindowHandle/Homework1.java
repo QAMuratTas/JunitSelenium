@@ -22,8 +22,9 @@ public class Homework1 extends BaseTest {
 
     @Test
     public void iframe() {
-        String homePageId = driver.getWindowHandle();
+
         driver.get("http://demo.guru99.com/test/guru99home/");
+        String homePageId = driver.getWindowHandle();
         List<WebElement> l = driver.findElements(By.xpath("//iframe"));
         System.out.println("iframe size: " + l.size());
         driver.switchTo().frame("a077aa5e");
