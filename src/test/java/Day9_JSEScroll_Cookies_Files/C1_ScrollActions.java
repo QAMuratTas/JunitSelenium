@@ -22,6 +22,17 @@ public class C1_ScrollActions extends BaseTest {
 
     }
 
-
-
+    @Test
+    public void scrollArrowUpDown() throws InterruptedException {
+        driver.get("https://amazon.com");
+        Actions actions = new Actions(driver);
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.ARROW_UP).perform();
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.ARROW_UP).perform();
+    }
 }
