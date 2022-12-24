@@ -1,4 +1,4 @@
-package Tasks241222;
+package TasksGarry;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -8,7 +8,7 @@ import utilities.BaseTest;
 
 import java.util.List;
 
-public class Tasks241222 extends BaseTest {
+public class Task1 extends BaseTest {
 
     /*
    1- https://www.amazon.com/ sayfasına gidelim.

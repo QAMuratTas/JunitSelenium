@@ -1,4 +1,4 @@
-package Tasks241222;
+package TasksGarry;
 
 import org.junit.Assert;
 import org.junit.Test;

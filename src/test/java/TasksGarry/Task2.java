@@ -1,4 +1,4 @@
-package Tasks241222;
+package TasksGarry;
 
 import com.github.javafaker.Faker;
 import org.junit.Assert;
