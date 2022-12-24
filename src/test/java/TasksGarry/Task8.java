@@ -26,7 +26,7 @@ public class Task8 extends BaseTest {
 
         actions.dragAndDrop(dragMe, dropHere).perform();
 
-        Assert.assertEquals(driver.findElement(By.xpath("//*[text()='Dropped!']")).getText(), "Dropped!");
+        Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"droppable\"]/p")).getText(), "Dropped!");
     }
 }
 
