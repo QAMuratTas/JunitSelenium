@@ -1,6 +1,6 @@
 package TasksGarry;
 
-import com.github.javafaker.Faker;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -67,7 +67,7 @@ public class AmazonTestInt extends BaseTest {
         // Sepete eklendiği kontrol ediliyor...
         WebElement sepetKontrol =driver.findElement(By.xpath("//span[@class='a-size-medium-plus a-color-base sw-atc-text a-text-bold']"));
         Assert.assertTrue(sepetKontrol.isDisplayed());
-        // sepete gdiliyor
+        // sepete gidiliyor
         WebElement sepeteGit =driver.findElement(By.id("nav-cart-count"));
         sepeteGit.click();
         // alışveriş sepeti nde oldugu komntrol ediliyor
