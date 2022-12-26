@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.io.File;
 
-public class c8_fileExiat {
+public class c8_fileExist {
     @Test
     public void fileExist() {
 
