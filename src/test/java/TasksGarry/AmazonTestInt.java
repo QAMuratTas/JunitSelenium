@@ -30,29 +30,35 @@ public class AmazonTestInt extends BaseTest {
         email.sendKeys("email@amazon.com" + Keys.ENTER);
         WebElement password = driver.findElement(By.id("ap_password"));
         password.sendKeys("emailpassword12345" + Keys.ENTER);
-        WebElement loginKontrol = driver.findElement(By.xpath("//h1[@class='a-spacing-small']"));
-        // Assert.assertTrue(loginKontrol.isDisplayed());
+        //login olunmadığı
+        WebElement loginKontrol = driver.findElement(By.xpath("//h4[@class='a-alert-heading']"));
+        Assert.assertEquals("Bir sorun oluştu",loginKontrol.getText());// -->Burada bir defa test true dedi ondan sonra false veriyor. Anlam veremedim
         WebElement anasayfayaDon = driver.findElement(By.xpath("//i[@class='a-icon a-icon-logo']"));
         anasayfayaDon.click();
         WebElement kategoriSec = driver.findElement(By.id("searchDropdownBox"));
-
+        // Kategori olarak Bilgisayarlar seçiliyor
         Select s = new Select(kategoriSec);
         s.selectByIndex(3);
-
+        //Bilgisayarlar kategorisi seçilip seçilmedği kontrol ediliyor...
         Assert.assertTrue(kategoriSec.getText().contains("Bilgisayarlar"));
 
+        //MSI aranıyor
         WebElement aramaMsi = driver.findElement(By.id("twotabsearchtextbox"));
         aramaMsi.sendKeys("MSI" + Keys.ENTER);
         WebElement MSIkonrol = driver.findElement(By.xpath("//*[@id=\"search\"]/span/div/h1/div/div[1]/div/div/span[1]"));
+        //listeleme kontrol ediliyor
         Assert.assertTrue(MSIkonrol.getText().contains("Aranan ürün"));
         Actions act = new Actions(driver);
-
+        //1.sayfanın sonuna gidiliyor...
         act.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).
                 sendKeys(Keys.PAGE_DOWN).perform();
         Thread.sleep(1000);
+        //2. sayafaya gidiliyor..
         WebElement ikinciSayfa = driver.findElement(By.xpath("//a[@aria-label='2 sayfasına git']"));
         ikinciSayfa.click();
+        //2. sayfada olmamız kontrol ediliyor
         Assert.assertTrue(driver.getCurrentUrl().contains("page=2"));
+        //2. ürün tıklanıyor
         WebElement ikinciUrunTik = driver.findElement(By.xpath("(//span[@class='a-size-base-plus a-color-base a-text-normal'])[2]"));
         ikinciUrunTik.click();
         // üyeliğim olmadığı için sepete ekledim
@@ -77,7 +83,7 @@ public class AmazonTestInt extends BaseTest {
         WebElement anaSayfagit = driver.findElement(By.id("nav-logo-sprites"));
         anaSayfagit.click();
         // Anasayfaya gidildiği kontrol ediliyor
-        Assert.assertTrue(driver.getCurrentUrl().contains("http://amazon.com.tr/"));
+        Assert.assertEquals("https://www.amazon.com.tr/ref=nav_logo",driver.getCurrentUrl());
 
     }
 
