@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class C01_Log4jDemo {
     public static void main(String[] args) {
-
+// Bu class yok sayılacak . importlardan kaynaklanan hatadan dolayı . C02 sorunsuz log oluşturdu.
         PropertyConfigurator.configure("log4j.properties");
         Logger logger = LogManager.getLogger(C01_Log4jDemo.class.getName());
 
