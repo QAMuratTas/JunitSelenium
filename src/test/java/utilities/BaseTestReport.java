@@ -14,50 +14,53 @@ import java.time.Duration;
 import java.util.Date;
 
 public class BaseTestReport {
+
     protected WebDriver driver;
 
-    protected ExtentReports extentReports;// rapormlama işlemini gerçekleştirir
+    protected ExtentReports extentReports; // raporlama islemini gerceklestirir
 
-    protected ExtentHtmlReporter extentHtmlReporter; //raporu HTML olarak düzenler
+    protected ExtentHtmlReporter extentHtmlReporter; // raporu HTML olarak duzenler
 
-    protected ExtentTest extentTest;// testimizin pass veya fail saklayan objemiz.Ekran görüntüleri için de kullanılır.
-
-
-
+    protected ExtentTest extentTest; // testimizin pass veya fail oldugunu saklayan objemiz. Ekran goruntuleri icin de kullanilir
 
 
 
     @Before
     public void setup(){
+
+        //Driver objemizi olusturduk konfigure ettik
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
 
-        // Extend reoprt objelerimizi de oluşturuyoruz
-
+        //Extent report objelerimizi de olusturuyoruz
         extentReports = new ExtentReports();
-        String currentDay =new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-        String filePath = System.getProperty("user.dir")+"/test-output/reports/testreport_"+currentDay+".html";
+
+        // Kaydedecegimiz dosya icin tarih stringi olusturuldu
+        String currentDate = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
+        String filePath = System.getProperty("user.dir") + "/test-output/reports/testReport_" + currentDate + ".html";
+
+        // HTML raporu olusturacak obje dosya yoluyla initialize edildi
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
+
+        // Raporlama yapan extentreport objemize HTML reporter baglandi
         extentReports.attachReporter(extentHtmlReporter);
 
-        extentReports.setSystemInfo("Environment ","QA");
-        extentReports.setSystemInfo("Browser","chrome");
+        // Rapor ile alakali ekstra opsiyonel bilgiler verildi
+        extentReports.setSystemInfo("Environment", "QA");
+        extentReports.setSystemInfo("Browser", "Chrome");
 
-        extentHtmlReporter.config().setDocumentTitle("CWreport");
-
-        extentHtmlReporter.config().setReportName(" Test run reoprt");
-
-
+        // HTML raporunda goruntulemek istedigimiz konfigurasyonlar yapildi
+        extentHtmlReporter.config().setDocumentTitle("CWReport");
+        extentHtmlReporter.config().setReportName("Test run report");
 
 
     }
+
     @After
-    public void teardown (){
+    public void teardown(){
         driver.quit();
+        extentReports.flush();
     }
-
-
-
 }
