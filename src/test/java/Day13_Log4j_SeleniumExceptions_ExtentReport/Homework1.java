@@ -25,7 +25,8 @@ public class Homework1 extends BaseTestReport {
 
     @Test
     public void logMessageTest() throws InterruptedException {
-
+        PropertyConfigurator.configure("log4j.properties");
+        Logger logger=Logger.getLogger(Homework1.class.getName());
         extentTest = extentReports.createTest("My first Test with LogMessage");
         extentTest.info("Go to URL :https://healthunify.com/bmicalculator/");
 
@@ -48,19 +49,25 @@ public class Homework1 extends BaseTestReport {
         WebElement calc = driver.findElement(By.name("cc"));
         extentTest.info("Clicking on calculate");
         calc.click();
-        WebElement getSI = driver.findElement(By.xpath("//input[@name='si']"));
-        System.out.println(getSI.getText());
-        extentTest.error("Not getting SI unit value");
+        WebElement getSI = driver.findElement(By.name("si"));
+        extentTest.info("Getting SI unit value");
+        System.out.println(getSI.getAttribute("value"));
+        logger.info("SI unit value printed");
+
         WebElement getUS = driver.findElement(By.name("us"));
-        System.out.println(getUS.getText());
-        extentTest.error("Not getting USUnit value");
+        extentTest.info("Getting USUnit value");
+        System.out.println(getUS.getAttribute("value"));
+        logger.info("US unit printed");
         WebElement getUK = driver.findElement(By.name("uk"));
-        System.out.println(getUK.getText());
-        extentTest.error("Not getting UkUnit value");
+        extentTest.info("Getting UkUnit value");
+        System.out.println(getUK.getAttribute("value"));
+        logger.info("Uk unit printed");
         WebElement overall = driver.findElement(By.xpath("//input[@class='content']"));
-        System.out.println(overall.getText());
-        extentTest.error("Not getting overall description");
-        extentTest.fail("Testimiz geçersiz");
+        extentTest.info("Getting overall description");
+        System.out.println(overall.getAttribute("value"));
+        logger.info("Overall description printed");
+        extentTest.pass("Test passed");
+
     }
 
 }
