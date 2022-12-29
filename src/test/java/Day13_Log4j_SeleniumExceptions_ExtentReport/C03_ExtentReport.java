@@ -22,7 +22,7 @@ public class C03_ExtentReport extends BaseTestReport {
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
         extentTest.info("Arama kismina log4j yaziliyor");
         searchBox.sendKeys("log4j");
-
+        System.out.println("Deneme");
 
         //Pass mesaji
         extentTest.pass("Testimiz gecerli");
